@@ -95,7 +95,7 @@ namespace UploadFiles
 
         private string GetContentType(string filePath)
         {
-            // Lấy phần mở rộng của tệp.
+            // Lấy phần mở rộng của tệp
             string extension = Path.GetExtension(filePath).ToLower();
 
             // chuyển phần mở rộng tệp tới loại nội dung tương ứng
