@@ -107,7 +107,7 @@ namespace UploadFiles
                     return "text/plain";
                 // Thêm nhiều trường hợp cho các loại tệp khác nếu cần
                 default:
-                    return "application/octet-stream"; // Nội dung mặc định
+                    return "application/octet-stream"; // Nội dung mặc định.
             }
         }
     }
