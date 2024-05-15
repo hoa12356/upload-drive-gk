@@ -41,7 +41,7 @@ namespace UploadFiles
         {
             try
             {
-                // Đọc tệp khóa tài khoản dịch vụ
+                // Đọc tệp khóa tài khoản dịch vụ.
                 GoogleCredential credential;
                 using (var stream = new FileStream(PathToServiceAccountKeyFile, FileMode.Open, FileAccess.Read))
                 {
