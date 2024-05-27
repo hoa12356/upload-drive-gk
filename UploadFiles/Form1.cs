@@ -41,7 +41,7 @@ namespace UploadFiles
         {
             try
             {
-                // Read the service account key file
+                // Đọc tệp khóa tài khoản dịch vụ.
                 GoogleCredential credential;
                 using (var stream = new FileStream(PathToServiceAccountKeyFile, FileMode.Open, FileAccess.Read))
                 {
@@ -49,7 +49,7 @@ namespace UploadFiles
                         .CreateScoped(DriveService.ScopeConstants.Drive);
                 }
 
-                // Create Drive service
+                // Tạo dịch vụ Drive
                 var service = new DriveService(new BaseClientService.Initializer()
                 {
                     HttpClientInitializer = credential
@@ -60,7 +60,7 @@ namespace UploadFiles
                     await UploadFileAsync(filePath, service);
                 }
 
-                // Clear list and display success message
+                // Xóa danh sách và hiển thị thông báo thành công
                 _listFiles.Clear();
                 filesSelected.Text = string.Empty;
                 MessageBox.Show("Files have been uploaded successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -79,7 +79,7 @@ namespace UploadFiles
                 Parents = new List<string> { ParentDirectoryId }
             };
 
-            // Determine the content type based on the file extension
+            // Xác định loại nội dung dựa trên phần mở rộng của tệp
             string contentType = GetContentType(filePath);
 
             using var fsSource = new FileStream(filePath, FileMode.Open, FileAccess.Read);
@@ -95,19 +95,19 @@ namespace UploadFiles
 
         private string GetContentType(string filePath)
         {
-            // Get the file extension
+            // Lấy phần mở rộng của tệp
             string extension = Path.GetExtension(filePath).ToLower();
 
-            // Map the file extension to the corresponding content type
+            // chuyển phần mở rộng tệp tới loại nội dung tương ứng
             switch (extension)
             {
                 case ".png":
                     return "image/png";
                 case ".txt":
                     return "text/plain";
-                // Add more cases for other file types if needed
+                // Thêm nhiều trường hợp cho các loại tệp khác nếu cần
                 default:
-                    return "application/octet-stream"; // Default content type
+                    return "application/octet-stream"; // Nội dung mặc định
             }
         }
     }
